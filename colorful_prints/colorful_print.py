@@ -33,8 +33,8 @@ __all__ = [
 # 初始化 Console，可以自定义 theme
 custom_theme = Theme(
     {
-        "info": "dim cyan",
-        "warning": "magenta",
+        "info": "blue",
+        "warning": "yellow",
         "danger": "bold red",
         "success": "green",
         "yellow": "yellow",
@@ -99,7 +99,7 @@ def success(response, **kwargs):
 
 @valid_str
 def warning(response, **kwargs):
-    console.print(f"[warnning]{response}", **kwargs)
+    console.print(f"[warning]{response}", **kwargs)
 
 
 @valid_str
@@ -223,12 +223,13 @@ if __name__ == "__main__":
 
     a = TestClass()
 
-    danger(1.4, a, sep="--", end="***")
-    warning(1.4, a, sep="--", end="***")
-    success(1.4, a, sep="--", end="***")
-    info(1.4, a, sep="--", end="***")
-    bright_blue_print(1.4, a, sep="\n", end="\n")
-    dim_cyan_print(1.4, a, sep="--", end="***\n")
-    bright_red_print(1.4, a, sep="--", end="***\n")
-    red_print(1.4, a, sep="--", end="***\n")
-    dim_red_print(1.4, a, sep="--", end="***\n")
+    danger("danger", sep="--",)
+    warning("warning", sep="--")
+    success("success", sep="--")
+    info("info", sep="--")
+    yellow_print("yellow")
+    # bright_blue_print(1.4, a, sep="\n", end="\n")
+    # dim_cyan_print(1.4, a, sep="--", end="***\n")
+    # bright_red_print(1.4, a, sep="--", end="***\n")
+    # red_print(1.4, a, sep="--", end="***\n")
+    # dim_red_print(1.4, a, sep="--", end="***\n")

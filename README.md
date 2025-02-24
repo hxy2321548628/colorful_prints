@@ -65,4 +65,9 @@
 
 # upload log
 
+`1.3` 修复1.2 bug 和 `warning` bug
+
+`1.2` 修改"info"和"warning"的颜色，在开发中debug更方便
+
 `1.1` 调整目录结构
+
