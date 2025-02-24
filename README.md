@@ -15,7 +15,7 @@
 ## 安装
 
 ```bash
-pip install colorful-prints
+pip install colorful-prints==1.5.1
 ```
 
 **要求：** Python 3.8+，需要安装 [rich](https://pypi.org/project/rich/) 库
