@@ -99,7 +99,6 @@ bright_yellow_print(
     "姓名", "张三",
     sep=": ",       # 使用冒号分隔
     end="!\n",      # 自定义结束符
-    file=open('log.txt', 'a')  # 写入文件
 )
 ```
 ![](./image/print.png)
