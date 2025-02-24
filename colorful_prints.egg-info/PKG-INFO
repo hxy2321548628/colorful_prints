@@ -1,0 +1,35 @@
+Metadata-Version: 2.2
+Name: colorful_prints
+Version: 1.0
+Summary: an enhanced version of the print function
+Home-page: https://github.com/hxy2321548628/color_prints
+Author: hxy
+Author-email: hxy2321548628@163.com
+License: MIT
+Keywords: python,print,color,red,green,yellow
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+Requires-Dist: rich
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license
+Dynamic: requires-dist
+Dynamic: summary
+
+
+# 一个颜色输出的库，print的增强版！
+
+使用colorama库实现
+
+效果如下：
+![](./image.png)
