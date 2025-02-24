@@ -1,8 +1,8 @@
 README.md
 setup.py
-color_prints/__init__.py
-color_prints/color_print.py
-color_prints/test_print.py
+colorful_prints/__init__.py
+colorful_prints/colorful_print.py
+colorful_prints/test_print.py
 colorful_prints.egg-info/PKG-INFO
 colorful_prints.egg-info/SOURCES.txt
 colorful_prints.egg-info/dependency_links.txt
