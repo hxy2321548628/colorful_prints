@@ -224,7 +224,7 @@ if __name__ == "__main__":
     a = TestClass()
 
     danger(1.4, a, sep="--", end="***")
-    warnning(1.4, a, sep="--", end="***")
+    warning(1.4, a, sep="--", end="***")
     success(1.4, a, sep="--", end="***")
     info(1.4, a, sep="--", end="***")
     bright_blue_print(1.4, a, sep="\n", end="\n")
