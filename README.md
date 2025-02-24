@@ -65,6 +65,8 @@
 
 # upload log
 
+`1.4` 打印函数修改，从`console`直接使用`rich.print`,支持flush
+
 `1.3` 修复1.2 bug 和 `warning` bug
 
 `1.2` 修改"info"和"warning"的颜色，在开发中debug更方便
