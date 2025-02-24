@@ -9,7 +9,7 @@ with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
 # you need to change all these
-VERSION = '1.4'
+VERSION = '1.5'
 DESCRIPTION = 'an enhanced version of the print function'
 
 setup(

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: colorful_prints
-Version: 1.4
+Version: 1.5
 Summary: an enhanced version of the print function
 Home-page: https://github.com/hxy2321548628/color_prints
 Author: hxy
@@ -83,6 +83,8 @@ Requires-Dist: rich
 
 
 # upload log
+
+`1.5` 加上类型提示，并重新调整文件结构，目前太多重复代码，下一步加上设计模式，让代码更优雅
 
 `1.4` 打印函数修改，从`console`直接使用`rich.print`,支持flush
 

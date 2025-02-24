@@ -1,4 +1,6 @@
 from rich import print
+from typing import Any, IO, Sequence
+from .utils import valid_str
 
 __all__ = [
     "yellow_print",
@@ -15,6 +17,7 @@ __all__ = [
     "bright_yellow_print",
     "bright_magenta_print",
     "bright_cyan_print",
+    "bright_black_print",
     "bright_white_print",
     "dim_red_print",
     "dim_green_print",
@@ -23,210 +26,608 @@ __all__ = [
     "dim_magenta_print",
     "dim_cyan_print",
     "dim_white_print",
+    "dim_black_print",
     "danger",
     "success",
     "info",
-    "warning"
+    "warning",
 ]
-# # 初始化 可以自定义 theme
-# custom_theme = Theme(
-#    /e =  {
-#         "info": "blue",
-#         "warning": "yellow",
-#         "danger": "bold red",
-#         "success": "green",
-#         "yellow": "yellow",
-#         "red": "red",
-#         "green": "green",
-#         "blue": "blue",
-#         "magenta": "magenta",
-#         "cyan": "cyan",
-#         "white": "white",
-#         "black": "black",
-#         "bright_red": "bold red",
-#         "bright_green": "bold green",
-#         "bright_blue": "bold blue",
-#         "bright_yellow": "bold yellow",
-#         "bright_magenta": "bold magenta",
-#         "bright_cyan": "bold cyan",
-#         "bright_white": "bold white",
-#         "dim_red": "dim red",
-#         "dim_green": "dim green",
-#         "dim_blue": "dim blue",
-#         "dim_yellow": "dim yellow",
-#         "dim_magenta": "dim magenta",
-#         "dim_cyan": "dim cyan",
-#         "dim_white": "dim white",
-#     }
-# )
-
-
-def valid_str(func):
-    def wrapper(*args, **kwargs):
-        converted_args = []
-        for arg in args:
-            try:
-                arg = str(arg)  # 尝试转换为字符串
-            except (TypeError, ValueError) as e:
-                raise ValueError(
-                    f"无法转换为字符串: {type(arg).__name__}, 原始值: {arg}"
-                ) from e
-            converted_args.append(arg)
-        sep = kwargs.pop("sep", " ")  # 使用 get 避免修改 kwargs
-        response = format_str(*converted_args, sep=sep)
-        return func(response, **kwargs)  # 传递转换后的参数
-
-    return wrapper
-
-
-def format_str(*args, sep=" "):
-    return sep.join(args)
 
 
 @valid_str
-def danger(response, **kwargs):
-    print(f"[bold red]{response}[/bold red]", **kwargs)
+def danger(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `bold red` formatting, often used to indicate danger or errors.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[bold red]{response}[/bold red]", sep=sep, end=end, file=file, flush=flush)
 
 
 @valid_str
-def success(response, **kwargs):
-    print(f"[green]{response}[/green]", **kwargs)
+def success(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `green` formatting, often used to indicate success.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[green]{response}[/green]", sep=sep, end=end, file=file, flush=flush)
 
 
 @valid_str
-def warning(response, **kwargs):
-    print(f"[yellow]{response}[/yellow]", **kwargs)
+def warning(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `yellow` formatting, often used to indicate warnings.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[yellow]{response}[/yellow]", sep=sep, end=end, file=file, flush=flush)
 
 
 @valid_str
-def info(response, **kwargs):
-    print(f"[blue]{response}[/blue]", **kwargs)
+def info(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `blue` formatting, often used to provide informational messages.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[blue]{response}[/blue]", sep=sep, end=end, file=file, flush=flush)
 
 
 @valid_str
-def yellow_print(response, **kwargs):
-    print(f"[yellow]{response}[/yellow]", **kwargs)
+def yellow_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `yellow` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[yellow]{response}[/yellow]", sep=sep, end=end, file=file, flush=flush)
 
 
 @valid_str
-def red_print(response, **kwargs):
-    print(f"[red]{response}[/red]", **kwargs)
+def red_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `red` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[red]{response}[/red]", sep=sep, end=end, file=file, flush=flush)
 
 
 @valid_str
-def green_print(response, **kwargs):
-    print(f"[green]{response}[/green]", **kwargs)
+def green_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `green` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[green]{response}[/green]", sep=sep, end=end, file=file, flush=flush)
 
 
 @valid_str
-def blue_print(response, **kwargs):
-    print(f"[blue]{response}[/blue]", **kwargs)
+def blue_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `blue` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[blue]{response}[/blue]", sep=sep, end=end, file=file, flush=flush)
 
 
 @valid_str
-def magenta_print(response, **kwargs):
-    print(f"[magenta]{response}[/magenta]", **kwargs)
+def magenta_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `magenta` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[magenta]{response}[/magenta]", sep=sep, end=end, file=file, flush=flush)
 
 
 @valid_str
-def cyan_print(response, **kwargs):
-    print(f"[cyan]{response}[/cyan]", **kwargs)
+def cyan_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `cyan` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[cyan]{response}[/cyan]", sep=sep, end=end, file=file, flush=flush)
 
 
 @valid_str
-def white_print(response, **kwargs):
-    print(f"[white]{response}[/white]", **kwargs)
+def white_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `white` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[white]{response}[/white]", sep=sep, end=end, file=file, flush=flush)
 
 
 @valid_str
-def black_print(response, **kwargs):
-    print(f"[black]{response}[/black]", **kwargs)
+def black_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `black` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[black]{response}[/black]", sep=sep, end=end, file=file, flush=flush)
 
 
 @valid_str
-def bright_red_print(response, **kwargs):
-    print(f"[bright_red]{response}[/bright_red]", **kwargs)
+def bright_black_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `bright black` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(
+        f"[bold black]{response}[/bold black]", sep=sep, end=end, file=file, flush=flush
+    )
 
 
 @valid_str
-def bright_green_print(response, **kwargs):
-    print(f"[bright_green]{response}[/bright_green]", **kwargs)
+def bright_red_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `bright red` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[bold red]{response}[/bold red]", sep=sep, end=end, file=file, flush=flush)
 
 
 @valid_str
-def bright_blue_print(response, **kwargs):
-    print(f"[bright_blue]{response}[/bright_blue]", **kwargs)
+def bright_green_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `bright green` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(
+        f"[bold green]{response}[/bold green]", sep=sep, end=end, file=file, flush=flush
+    )
 
 
 @valid_str
-def bright_yellow_print(response, **kwargs):
-    print(f"[bright_yellow]{response}[/bright_yellow]", **kwargs)
+def bright_blue_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `bright blue` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(
+        f"[bold blue]{response}[/bold blue]", sep=sep, end=end, file=file, flush=flush
+    )
 
 
 @valid_str
-def bright_magenta_print(response, **kwargs):
-    print(f"[bright_magenta]{response}[/bright_magenta]", **kwargs)
+def bright_yellow_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `bright yellow` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(
+        f"[bold yellow]{response}[/bold yellow]",
+        sep=sep,
+        end=end,
+        file=file,
+        flush=flush,
+    )
 
 
 @valid_str
-def bright_cyan_print(response, **kwargs):
-    print(f"[bright_cyan]{response}[/bright_cyan]", **kwargs)
+def bright_magenta_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `bright magenta` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(
+        f"[bold magenta]{response}[/bold magenta]",
+        sep=sep,
+        end=end,
+        file=file,
+        flush=flush,
+    )
 
 
 @valid_str
-def bright_white_print(response, **kwargs):
-    print(f"[bright_white]{response}[/bright_white]", **kwargs)
+def bright_cyan_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `bright cyan` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(
+        f"[bold cyan]{response}[/bold cyan]", sep=sep, end=end, file=file, flush=flush
+    )
 
 
 @valid_str
-def dim_red_print(response, **kwargs):
-    print(f"[dim_red]{response}[/dim_red]", **kwargs)
+def bright_white_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `bright white` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(
+        f"[bold white]{response}[/bold white]", sep=sep, end=end, file=file, flush=flush
+    )
 
 
 @valid_str
-def dim_green_print(response, **kwargs):
-    print(f"[dim_green]{response}[/dim_green]", **kwargs)
+def dim_black_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `dim black` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(
+        f"[dim black]{response}[/dim black]", sep=sep, end=end, file=file, flush=flush
+    )
 
 
 @valid_str
-def dim_blue_print(response, **kwargs):
-    print(f"[dim_blue]{response}[/dim_blue]", **kwargs)
+def dim_red_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `dim red` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[dim red]{response}[/dim red]", sep=sep, end=end, file=file, flush=flush)
 
 
 @valid_str
-def dim_yellow_print(response, **kwargs):
-    print(f"[dim_yellow]{response}[/dim_yellow]", **kwargs)
+def dim_green_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `dim green` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(
+        f"[dim green]{response}[/dim green]", sep=sep, end=end, file=file, flush=flush
+    )
 
 
 @valid_str
-def dim_magenta_print(response, **kwargs):
-    print(f"[dim_magenta]{response}[/dim_magenta]", **kwargs)
+def dim_blue_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `dim blue` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[dim blue]{response}[/dim blue]", sep=sep, end=end, file=file, flush=flush)
 
 
 @valid_str
-def dim_cyan_print(response, **kwargs):
-    print(f"[dim_cyan]{response}[/dim_cyan]", **kwargs)
+def dim_yellow_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `dim yellow` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(
+        f"[dim yellow]{response}[/dim yellow]", sep=sep, end=end, file=file, flush=flush
+    )
 
 
 @valid_str
-def dim_white_print(response, **kwargs):
-    print(f"[dim_white]{response}[/dim_white]", **kwargs)
+def dim_magenta_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `dim magenta` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(
+        f"[dim magenta]{response}[/dim magenta]",
+        sep=sep,
+        end=end,
+        file=file,
+        flush=flush,
+    )
 
 
-if __name__ == "__main__":
-    # test
-    from test_print import TestClass
+@valid_str
+def dim_cyan_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `dim cyan` formatting.
 
-    a = TestClass()
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(f"[dim cyan]{response}[/dim cyan]", sep=sep, end=end, file=file, flush=flush)
 
-    danger("danger", sep="--",)
-    warning("warning", sep="--")
-    success("success", sep="--")
-    info("info", sep="--")
-    yellow_print("yellow")
-    print("[yellow]hello world[/yellow]")
-    # bright_blue_print(1.4, a, sep="\n", end="\n")
-    # dim_cyan_print(1.4, a, sep="--", end="***\n")
-    # bright_red_print(1.4, a, sep="--", end="***\n")
-    # red_print(1.4, a, sep="--", end="***\n")
-    # dim_red_print(1.4, a, sep="--", end="***\n")
+
+@valid_str
+def dim_white_print(
+    response: Any | Sequence[Any],
+    sep: str = " ",
+    end: str = "\n",
+    file: IO[str] | None = None,
+    flush: bool = False,
+) -> None:
+    """Prints the given `response` to the console with `dim white` formatting.
+
+    Args:
+        response: The object(s) to be printed. Can be a single object or a sequence of objects.
+        sep:  String inserted between values, default ' '.
+        end:  String appended after the last value, default '\\n'.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush: Whether to forcibly flush the stream.
+    """
+    print(
+        f"[dim white]{response}[/dim white]", sep=sep, end=end, file=file, flush=flush
+    )
+
+
+
