@@ -1,0 +1,11 @@
+README.md
+setup.py
+colorful_prints/__init__.py
+colorful_prints/colorful_prints.py
+colorful_prints/test_print.py
+colorful_prints/utils.py
+colorful_prints.egg-info/PKG-INFO
+colorful_prints.egg-info/SOURCES.txt
+colorful_prints.egg-info/dependency_links.txt
+colorful_prints.egg-info/requires.txt
+colorful_prints.egg-info/top_level.txt

@@ -1,6 +1,7 @@
 from rich import print
 from typing import Any, IO, Sequence
 from .utils import valid_str
+from rich.console import Console
 
 __all__ = [
     "yellow_print",
@@ -41,6 +42,8 @@ def danger(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `bold red` formatting, often used to indicate danger or errors.
 
@@ -51,7 +54,7 @@ def danger(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[bold red]{response}[/bold red]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[bold red]{response}[/bold red]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -61,6 +64,8 @@ def success(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `green` formatting, often used to indicate success.
 
@@ -71,7 +76,7 @@ def success(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[green]{response}[/green]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[green]{response}[/green]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -81,6 +86,8 @@ def warning(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `yellow` formatting, often used to indicate warnings.
 
@@ -91,7 +98,7 @@ def warning(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[yellow]{response}[/yellow]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[yellow]{response}[/yellow]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -101,6 +108,8 @@ def info(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `blue` formatting, often used to provide informational messages.
 
@@ -111,7 +120,7 @@ def info(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[blue]{response}[/blue]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[blue]{response}[/blue]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -121,6 +130,8 @@ def yellow_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `yellow` formatting.
 
@@ -131,7 +142,7 @@ def yellow_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[yellow]{response}[/yellow]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[yellow]{response}[/yellow]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -141,6 +152,8 @@ def red_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `red` formatting.
 
@@ -151,7 +164,7 @@ def red_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[red]{response}[/red]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[red]{response}[/red]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -161,6 +174,8 @@ def green_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `green` formatting.
 
@@ -171,7 +186,7 @@ def green_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[green]{response}[/green]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[green]{response}[/green]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -181,6 +196,8 @@ def blue_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `blue` formatting.
 
@@ -191,7 +208,7 @@ def blue_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[blue]{response}[/blue]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[blue]{response}[/blue]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -201,6 +218,8 @@ def magenta_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `magenta` formatting.
 
@@ -211,7 +230,7 @@ def magenta_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[magenta]{response}[/magenta]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[magenta]{response}[/magenta]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -221,6 +240,8 @@ def cyan_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `cyan` formatting.
 
@@ -231,7 +252,7 @@ def cyan_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[cyan]{response}[/cyan]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[cyan]{response}[/cyan]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -241,6 +262,8 @@ def white_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `white` formatting.
 
@@ -251,7 +274,7 @@ def white_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[white]{response}[/white]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[white]{response}[/white]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -261,6 +284,8 @@ def black_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `black` formatting.
 
@@ -271,7 +296,7 @@ def black_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[black]{response}[/black]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[black]{response}[/black]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -281,6 +306,8 @@ def bright_black_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `bright black` formatting.
 
@@ -291,9 +318,7 @@ def bright_black_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(
-        f"[bold black]{response}[/bold black]", sep=sep, end=end, file=file, flush=flush
-    )
+    _console.print(f"[bold black]{response}[/bold black]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -303,6 +328,8 @@ def bright_red_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `bright red` formatting.
 
@@ -313,7 +340,7 @@ def bright_red_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[bold red]{response}[/bold red]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[bold red]{response}[/bold red]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -323,6 +350,8 @@ def bright_green_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `bright green` formatting.
 
@@ -333,9 +362,7 @@ def bright_green_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(
-        f"[bold green]{response}[/bold green]", sep=sep, end=end, file=file, flush=flush
-    )
+    _console.print(f"[bold green]{response}[/bold green]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -345,6 +372,8 @@ def bright_blue_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `bright blue` formatting.
 
@@ -355,9 +384,7 @@ def bright_blue_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(
-        f"[bold blue]{response}[/bold blue]", sep=sep, end=end, file=file, flush=flush
-    )
+    _console.print(f"[bold blue]{response}[/bold blue]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -367,6 +394,8 @@ def bright_yellow_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `bright yellow` formatting.
 
@@ -377,13 +406,7 @@ def bright_yellow_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(
-        f"[bold yellow]{response}[/bold yellow]",
-        sep=sep,
-        end=end,
-        file=file,
-        flush=flush,
-    )
+    _console.print(f"[bold yellow]{response}[/bold yellow]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -393,6 +416,8 @@ def bright_magenta_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `bright magenta` formatting.
 
@@ -403,12 +428,8 @@ def bright_magenta_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(
-        f"[bold magenta]{response}[/bold magenta]",
-        sep=sep,
-        end=end,
-        file=file,
-        flush=flush,
+    _console.print(
+        f"[bold magenta]{response}[/bold magenta]", sep=sep, end=end, **kwargs
     )
 
 
@@ -419,6 +440,8 @@ def bright_cyan_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `bright cyan` formatting.
 
@@ -429,9 +452,7 @@ def bright_cyan_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(
-        f"[bold cyan]{response}[/bold cyan]", sep=sep, end=end, file=file, flush=flush
-    )
+    _console.print(f"[bold cyan]{response}[/bold cyan]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -441,6 +462,8 @@ def bright_white_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `bright white` formatting.
 
@@ -451,9 +474,7 @@ def bright_white_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(
-        f"[bold white]{response}[/bold white]", sep=sep, end=end, file=file, flush=flush
-    )
+    _console.print(f"[bold white]{response}[/bold white]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -463,6 +484,8 @@ def dim_black_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `dim black` formatting.
 
@@ -473,9 +496,7 @@ def dim_black_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(
-        f"[dim black]{response}[/dim black]", sep=sep, end=end, file=file, flush=flush
-    )
+    _console.print(f"[dim black]{response}[/dim black]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -485,6 +506,8 @@ def dim_red_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `dim red` formatting.
 
@@ -495,7 +518,7 @@ def dim_red_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[dim red]{response}[/dim red]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[dim red]{response}[/dim red]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -505,6 +528,8 @@ def dim_green_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `dim green` formatting.
 
@@ -515,9 +540,7 @@ def dim_green_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(
-        f"[dim green]{response}[/dim green]", sep=sep, end=end, file=file, flush=flush
-    )
+    _console.print(f"[dim green]{response}[/dim green]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -527,6 +550,8 @@ def dim_blue_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `dim blue` formatting.
 
@@ -537,7 +562,7 @@ def dim_blue_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[dim blue]{response}[/dim blue]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[dim blue]{response}[/dim blue]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -547,6 +572,8 @@ def dim_yellow_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `dim yellow` formatting.
 
@@ -557,9 +584,7 @@ def dim_yellow_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(
-        f"[dim yellow]{response}[/dim yellow]", sep=sep, end=end, file=file, flush=flush
-    )
+    _console.print(f"[dim yellow]{response}[/dim yellow]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -569,6 +594,8 @@ def dim_magenta_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `dim magenta` formatting.
 
@@ -579,13 +606,7 @@ def dim_magenta_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(
-        f"[dim magenta]{response}[/dim magenta]",
-        sep=sep,
-        end=end,
-        file=file,
-        flush=flush,
-    )
+    _console.print(f"[dim magenta]{response}[/dim magenta]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -595,6 +616,8 @@ def dim_cyan_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `dim cyan` formatting.
 
@@ -605,7 +628,7 @@ def dim_cyan_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(f"[dim cyan]{response}[/dim cyan]", sep=sep, end=end, file=file, flush=flush)
+    _console.print(f"[dim cyan]{response}[/dim cyan]", sep=sep, end=end, **kwargs)
 
 
 @valid_str
@@ -615,6 +638,8 @@ def dim_white_print(
     end: str = "\n",
     file: IO[str] | None = None,
     flush: bool = False,
+    _console: Console = None,
+    **kwargs,
 ) -> None:
     """Prints the given `response` to the console with `dim white` formatting.
 
@@ -625,9 +650,4 @@ def dim_white_print(
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush: Whether to forcibly flush the stream.
     """
-    print(
-        f"[dim white]{response}[/dim white]", sep=sep, end=end, file=file, flush=flush
-    )
-
-
-
+    _console.print(f"[dim white]{response}[/dim white]", sep=sep, end=end, **kwargs)

@@ -1,5 +1,6 @@
 from typing import Callable, TypeVar, ParamSpec
 from functools import wraps
+from rich.console import Console
 
 # 使用 ParamSpec 和 TypeVar 来更精确地定义装饰器的类型
 P = ParamSpec("P")
@@ -23,8 +24,14 @@ def valid_str(func: Callable[P, R]) -> Callable[P, R]:
                 ) from e
             converted_args.append(arg)
         sep = kwargs.pop("sep", " ")  # 使用 get 避免修改 kwargs
+        kwargs["_console"] = (
+            kwargs.pop("_console")
+            if bool(kwargs.get("_console"))
+            else Console(file=kwargs.pop("file", None), force_jupyter=False)
+        )
         response = format_str(*converted_args, sep=sep)
         return func(response, **kwargs)  # 传递转换后的参数
+
     return wrapper
 
 
