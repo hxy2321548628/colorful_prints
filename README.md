@@ -3,7 +3,7 @@
 
 ![PyPI Version](https://img.shields.io/pypi/v/colorful_prints?style=flat-square) ![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg?style=flat-square)
 
-一个基于 [rich](https://github.com/Textualize/rich) 的终端彩色打印工具集，提供多达 20+ 种预设颜色样式，支持语义化日志输出（危险/成功/警告/信息）。
+一个基于 [rich](https://github.com/Textualize/rich) 的终端彩色打印工具集，简化原来繁琐的输入，提供 20+ 种预设颜色样式，支持语义化日志输出（危险/成功/警告/信息）。
 
 ## 主要特性
 
